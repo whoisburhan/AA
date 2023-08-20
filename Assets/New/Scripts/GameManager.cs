@@ -45,6 +45,7 @@ namespace FantasyRealm.AA
 
             }
 		}
+
         public int CurrentLevel
         {
             get
@@ -97,11 +98,13 @@ namespace FantasyRealm.AA
             await Task.Delay(200);
             if (gameHasEnded)
                 return;
-            CurrentLevel++;
-			UIManager.Instance.ActivateVictoryPanel();
-			audioSource.PlayOneShot(victoryClip);
-			victoryParticle.SetActive(true);
-		}
+            CurrentLevel++;            
+            audioSource.PlayOneShot(victoryClip);
+            victoryParticle.SetActive(true);
+            UIManager.Instance.ActivateVictoryPanel();
+            WeeGooAdManager.Instance.GetAd();
+
+        }
 
 		public void TriggerPinFireSound() 
 		{
@@ -111,8 +114,9 @@ namespace FantasyRealm.AA
 		public void RestartLevel()
 		{
 			UIManager.Instance.ActivateGameOverPanel();
-			//SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex);
-		}
+            WeeGooAdManager.Instance.GetAd();
+            //SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex);
+        }
 
 	}
 }

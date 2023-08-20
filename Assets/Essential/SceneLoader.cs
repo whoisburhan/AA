@@ -2,6 +2,7 @@ using System.Threading.Tasks;
 using UnityEngine;
 using UnityEngine.SceneManagement;
 using UnityEngine.UI;
+using static UnityEngine.Rendering.DebugUI;
 
 public class SceneLoader : MonoBehaviour
 {
@@ -28,8 +29,9 @@ public class SceneLoader : MonoBehaviour
 
     private void Start()
     {
-        LoadScene("MainMenu");
-        //LoadScene("MainLevel");
+        PlayerPrefs.SetInt("CURRENT_LEVEL", 0);
+        //LoadScene("MainMenu");
+        LoadScene("MainLevel");
     }
 
     private void Update()
